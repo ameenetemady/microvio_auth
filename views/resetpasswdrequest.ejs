@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include head %>
+</head>
+
+
+<body>
+	<header>
+        <% include header %>	
+	</header>
+
+	<main>
+	<div class="col-sm-4 col-sm-offset-4">
+		<h3><span class="fa fa-sign-in"></span> Reset Password</h3>
+
+	<!-- show any messages that come back with authentication -->
+	<% if (message.length > 0) { %>
+		<div class="alert alert-danger"><%= message %></div>
+	<% } %>
+
+
+	<!-- Reset Password Request FORM -->
+	<form action="/resetpasswdrequest" method="post">
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control" name="email">
+		</div>
+		
+		<input type="hidden" name="srcuri" value="<%- srcuri -%>" >
+
+		<div class="form-group">
+		<button type="submit" class="btn btn-warning btn">Send Reset Password Request</button>
+		</div>
+	</form>
+
+	</div>
+	</main>
+</body>
+</html>
+
+
+
+
