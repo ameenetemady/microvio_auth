@@ -9,6 +9,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 var User       		= require('../models/account');
 
 var Token = require('../models/token')
+var Token_ResetPasswd = require('../models/token_resetpasswd');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -131,8 +132,10 @@ module.exports = function(passport) {
 			req.session.uid = newToken.uid;
 
 			var uriRedirect = appendQuery(req.body.srcuri, { token: newToken.accessToken, uid: newToken.uid})
-			console.log('Redirecting to: %s', uriRedirect);
-			req.session.returnTo = uriRedirect;
+			var uriRedirect2 = appendQuery('/counting', { srcuri: uriRedirect})
+	
+			console.log('Redirecting to: %s', uriRedirect2);
+			req.session.returnTo = uriRedirect2;
             		return done(null, user);
 		});
         });

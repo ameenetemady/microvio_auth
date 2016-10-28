@@ -17,6 +17,10 @@
 	<% if ( typeof message !== 'undefined' && message.length > 0) { %>
 		<div class="alert alert-danger"><%= message %></div>
 	<% } %>
+	<% if ( typeof success_message !== 'undefined' && success_message.length > 0) { %>
+		<div class="alert alert-success"><%= success_message %></div>
+	<% } %>
+
 
 	<!-- LOGIN FORM -->
 	<form action="/login" method="post">
@@ -28,11 +32,14 @@
 			<label>Password</label>
 			<input type="password" class="form-control" name="password">
 		</div>
+
 		<input type="hidden" name="srcuri" value="<%- srcuri -%>" >
 		<div class="form-group">
 		<button type="submit" class="btn btn-warning btn">Login</button>
 
 		<a href="/register?srcuri=<%- srcuri -%>" class="btn btn-warning btn"> Create a new account </a>
+		<a href="/resetpasswdrequest?srcuri=<%- srcuri -%>" class="btn btn-warning btn"> Forgot password </a>
+		
 		</div>
 	</form>
 
